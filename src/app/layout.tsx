@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Baloo_2, Inter } from "next/font/google";
 import "./globals.css";
+import Header from "@/components/layout/Header";
 
 const baloo2 = Baloo_2({
   variable: "--font-baloo",
@@ -27,7 +28,12 @@ export default function RootLayout({
       lang="en"
       className={`${baloo2.variable} ${inter.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col">
+        <Header />
+        <main>
+        {children}
+        </main>
+      </body>
     </html>
   );
 }

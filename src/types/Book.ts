@@ -9,3 +9,9 @@ export interface Book extends BookInput {
 
 export type { BookInput };
 export type IBook = Book;
+
+export interface NAVLINK {
+    name: string;
+    href: string;
+    current: boolean;
+}
