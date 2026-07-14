@@ -1,15 +1,5 @@
 import mongoose from 'mongoose';
-
-
-interface IBook {
-    title: string;
-    author: string;
-    isbn: string;
-    category: string;
-    publicationYear: number;
-    description: string;
-    available: boolean;
-}
+import { IBook } from '@/types/Book';
 
 const BookSchema = new mongoose.Schema<IBook>({
     title: {

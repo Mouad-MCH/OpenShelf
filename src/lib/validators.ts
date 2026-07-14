@@ -11,3 +11,6 @@ export const bookSchema = z.object({
 });
 
 export type BookInput = z.infer<typeof bookSchema>;
+export const bookUpdate = bookSchema.partial();
+
+
