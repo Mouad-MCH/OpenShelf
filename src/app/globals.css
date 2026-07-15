@@ -86,11 +86,19 @@ h6 {
   .btn_primary {
     @apply bg-primary text-primary-foreground hover:bg-primary/80 transition rounded-full px-4 py-2;
   }
+
+  section {
+    @apply px-5 py-15 md:px-20;
+  }
+
+  .hero_image {
+    animation: top_botom 4s infinite;
+  }
 }
 
 @layer components {
   .header {
-    @apply flex flex-between bg-primary-foreground p-5;
+    @apply flex flex-between bg-primary-foreground p-5 md:px-20;
   }
 }
 
@@ -107,5 +115,14 @@ h6 {
 }
 
 @utility grid-4 {
-  @apply grid grid-cols-4 gap-4;
+  @apply grid grid-cols-4 gap-4 max-md:grid-cols-3 max-sm:grid-cols-2;
+}
+
+@keyframes top_botom {
+  50% {
+    transform: translateY(-30px) rotate(10deg);
+  }
+  100% {
+    transform: translateY(0) rotate(0);
+  }
 }

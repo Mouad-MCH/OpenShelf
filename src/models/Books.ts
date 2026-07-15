@@ -25,6 +25,10 @@ const BookSchema = new mongoose.Schema<IBook>({
         type: Boolean,
         required: true,
         default: true,
+    },
+    coverImage: {
+        type: String,
+        required: false,
     }
 
 }, { timestamps: true, })

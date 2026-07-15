@@ -8,6 +8,7 @@ export const bookSchema = z.object({
     publicationYear: z.number().int().min(1000, 'Invalid publication year').max(new Date().getFullYear(), "Publication year cannot be in the future"),
     description: z.string().trim().min(1, "Description is required"),
     available: z.boolean(),
+    coverImage: z.string().trim().url('Invalid image URL').optional(),
 });
 
 export type BookInput = z.infer<typeof bookSchema>;

@@ -2,13 +2,14 @@ import { Book, BookInput } from "@/types/Book";
 
 const BASE_URL = '/api/books'
 
-export const getBooks = async (query: string, category: string , available: boolean): Promise<Book[]> => {
+export const getBooks = async (query?: string, category?: string , available?: boolean): Promise<Book[]> => {
     const params = new URLSearchParams();
     if(query) params.set("q", query);
     if(category) params.set('category', category);
     if(available) params.set('available', String(available));
 
-    const res = await fetch(BASE_URL);
+    const queryString = params.toString();
+    const res = await fetch(queryString ? `${BASE_URL}?${queryString}` : BASE_URL);
     if(!res.ok) {
         throw new Error("Failed to fetch books");
     }
