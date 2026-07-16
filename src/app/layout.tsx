@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Baloo_2, Inter } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/layout/Header";
+import Footer from "@/components/layout/Footer";
 import { BooksProvider } from "@/context/booksProvider";
 
 const baloo2 = Baloo_2({
@@ -35,6 +36,7 @@ export default function RootLayout({
           <main>
           {children}
           </main>
+          <Footer />
         </BooksProvider>
       </body>
     </html>

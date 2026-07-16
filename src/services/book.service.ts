@@ -33,6 +33,22 @@ export const createBook = async (data: BookInput): Promise<Book> => {
     return json;
 }
 
+export const updateBook = async (id: string, data: Partial<BookInput>): Promise<Book> => {
+    const res = await fetch(`${BASE_URL}/${id}`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+    });
+
+    const json = await res.json();
+
+    if (!res.ok) {
+        throw new Error(typeof json.error === 'string' ? json.error : JSON.stringify(json.error));
+    }
+
+    return json;
+}
+
 export const getBookById = async (id: string): Promise<Book> => {
     const res = await fetch(`${BASE_URL}/${id}`);
 

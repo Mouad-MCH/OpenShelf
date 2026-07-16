@@ -1,10 +1,7 @@
+import AddBookForm from "@/components/Book/AddBookForm";
 
 const page = () => {
-  return (
-    <div className='m-10 flex-center text-2xl text-primary'>
-      <h1>Add book</h1>
-    </div>
-  )
-}
+  return <AddBookForm />;
+};
 
-export default page
+export default page;
