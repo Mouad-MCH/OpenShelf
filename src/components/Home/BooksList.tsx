@@ -6,8 +6,7 @@ import Empty from "../ui/Empty";
 import ErrorState from "../ui/Error";
 
 const BooksList = () => {
-  const { books, loading, error } = useBooks();
-  console.log(books)
+  const { books, loading, error, deleteBook } = useBooks();
 
   if (loading) return <p className="text-center py-10">Loading books...</p>;
   if (error) return <ErrorState description={error} />;
@@ -16,7 +15,7 @@ const BooksList = () => {
   return (
     <div className="w-full grid-4">
       {books.map((b) => (
-        <BookCard key={b._id} book={b} />
+        <BookCard key={b._id} book={b} onDelete={deleteBook} />
       ))}
     </div>
   );

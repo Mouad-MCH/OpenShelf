@@ -16,6 +16,7 @@ import { Book } from "@/types/Book";
 import { getBookById } from "@/services/book.service";
 import ErrorState from "../ui/Error";
 import Empty from "../ui/Empty";
+import { useBooks } from "@/context/booksProvider";
 
 const stats = [
   { label: "Total Copies", value: "12", color: "text-primary" },
@@ -27,7 +28,9 @@ const BookDetails = () => {
   const { id } = useParams<{ id: string }>();
   const [book, setBook] = useState<Book | null>(null);
   const [error, setError] = useState('');
-  const [loading, setLoading] = useState<boolean>(false)
+  const [loading, setLoading] = useState<boolean>(false);
+
+  const { deleteBook } = useBooks()
 
 
   useEffect(() => {
@@ -122,6 +125,7 @@ const BookDetails = () => {
             </Link>
             <button
               type="button"
+              onClick={() => deleteBook(id)}
               className="flex items-center gap-2 rounded-full border border-red-300 text-red-500 px-5 py-2 text-sm hover:bg-red-50 transition"
             >
               <Trash2 size={14} />

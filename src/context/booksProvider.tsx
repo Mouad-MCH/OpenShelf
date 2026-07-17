@@ -1,6 +1,6 @@
 "use client";
 
-import { getBooks } from "@/services/book.service";
+import { deletBook, getBooks } from "@/services/book.service";
 import { Book } from "@/types/Book";
 import {
   createContext,
@@ -56,6 +56,14 @@ export const BooksProvider = ({ children }: { children: ReactNode }) => {
     };
   }, [all, available, search, category]);
 
+  const deleteBook = async (id: string) => {
+    try {
+      await deletBook(id);
+    } catch(err) {
+      setError(err instanceof Error ? err.message : String(err))
+    }
+  };
+
   return (
     <BooksContext.Provider
       value={{
@@ -72,6 +80,7 @@ export const BooksProvider = ({ children }: { children: ReactNode }) => {
         reset,
         loading,
         handleFilter,
+        deleteBook
       }}
     >
         {children}

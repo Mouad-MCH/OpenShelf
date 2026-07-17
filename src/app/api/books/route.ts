@@ -3,16 +3,23 @@ import { NextRequest, NextResponse } from "next/server";
 import dbConnect from "@/lib/db";
 import { bookSchema } from "@/lib/validators";
 import z from "zod";
+import { cacheLife, cacheTag } from "next/cache";
 
+const getBookData = async (filter: Record<string, unknown>) => {
+    'use cache'
+    cacheLife("minutes")
+    cacheTag('books')
+    await dbConnect()
+
+    return Books.find(filter)
+}
 
 
 export async function GET(request: NextRequest) {
     const { searchParams } = new URL(request.url);
     const category = searchParams.get("category");
     const q = searchParams.get('q');
-    const available = searchParams.get('available');
-
-    await dbConnect();  
+    const available = searchParams.get('available'); 
 
     const filter: Record<string, unknown> = {};
 
@@ -26,7 +33,7 @@ export async function GET(request: NextRequest) {
         ];
     }
 
-    const books = await Books.find(filter);
+    const books = await getBookData(filter);
 
     return NextResponse.json(books);
 }

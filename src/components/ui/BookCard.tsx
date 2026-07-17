@@ -56,7 +56,7 @@ const BookCard = ({ book, onDelete }: BookCardProps) => {
             View
           </Link>
           <Link
-            href={`/books/edit/${book._id}`}
+            href={`/books/${book._id}/edit`}
             className="flex-1 text-center rounded-full border border-primary text-primary hover:bg-primary hover:text-primary-foreground transition px-4 py-1.5 text-sm"
           >
             Edit

@@ -39,4 +39,6 @@ export interface BooksContextType {
   loading: boolean;
 
   handleFilter: (q: string, c: string, a: boolean) => Promise<void>;
+
+  deleteBook: (id: string) => Promise<void>;
 }
